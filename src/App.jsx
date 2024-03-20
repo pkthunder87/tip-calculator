@@ -1,6 +1,6 @@
 function App() {
   return (
-    <div className="mr-72 mt-8 bg-cream text-6xl text-soft-red">
+    <div className="text-light-grayish-cyan bg-very-dark-cyan mr-72 mt-8 text-6xl">
       Tip Calculator
     </div>
   );
