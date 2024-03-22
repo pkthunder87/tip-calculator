@@ -18,6 +18,8 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - Semantic HTML5 markup
 - Flexbox
 - Grid
+- React
+- Vite
 
 ## Author
 
