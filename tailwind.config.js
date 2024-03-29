@@ -20,6 +20,7 @@ export default {
         'light-grayish-cyan': 'hsl(185, 41%, 84%)',
         'very-light-grayish-cyan': 'hsl(189, 41%, 97%)',
         'highlight-cyan': 'hsl(174, 53%, 60%)',
+        'input-cyan': 'hsl(184, 19%, 68%)',
       },
     },
   },
