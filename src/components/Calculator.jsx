@@ -10,17 +10,28 @@ function Calculator() {
   function whenChange(data) {
     console.log(data);
   }
+
+  function onError(errors) {
+    console.log(errors);
+  }
   return (
     <div className="-mt-10 flex h-full w-full items-center justify-center">
       <form
-        onChange={handleSubmit(whenChange)}
+        onChange={handleSubmit(whenChange, onError)}
         className="flex h-full w-[64%] items-center justify-center gap-[4%] rounded-[16px] bg-white p-[2%] drop-shadow-sm"
       >
-        <div className="flex h-[100%] w-[48%] flex-col  gap-12 rounded-[26px]  p-4 text-very-dark-cyan">
+        <div className="flex h-[100%] w-[48%] flex-col  gap-12 rounded-[26px]  p-4 font-bold text-dark-grayish-cyan">
           <div>
-            <label className="text-sm" htmlFor="bill">
-              Bill
-            </label>
+            <div className="flex justify-between text-xs">
+              <label className="" htmlFor="bill">
+                Bill
+              </label>
+              {errors?.bill ? (
+                <p className="text-red-400">{errors?.bill.message}</p>
+              ) : (
+                ''
+              )}
+            </div>
             <label
               htmlFor="bill"
               className="flex h-8 w-full cursor-pointer items-center   rounded-sm bg-very-light-grayish-cyan px-2 ring-highlight-cyan focus-within:ring-2"
@@ -31,17 +42,23 @@ function Calculator() {
                 alt="dollar symbol"
               />
               <input
-                className="placeholder:text-input-cyan h-8 w-full cursor-pointer bg-very-light-grayish-cyan text-end font-bold caret-highlight-cyan outline-none"
+                className="placeholder:text-input-cyan h-8 w-full cursor-pointer bg-very-light-grayish-cyan text-end font-bold text-very-dark-cyan caret-highlight-cyan outline-none"
                 placeholder="0"
                 type="text"
                 id="bill"
-                {...register('bill')}
+                {...register('bill', {
+                  required: 'This field is required',
+                  validate: {
+                    zero: (v) => parseInt(v) !== 0 || "Can't be zero",
+                    positive: (v) => parseInt(v) > 0 || "Can't be negative",
+                  },
+                })}
               />
             </label>
           </div>
 
           <fieldset className="grid grid-cols-3 gap-3 text-lg font-bold text-white">
-            <legend className="text-sm font-normal text-very-dark-cyan">
+            <legend className="text-xs  text-dark-grayish-cyan">
               Select Tip %
             </legend>
 
@@ -138,9 +155,16 @@ function Calculator() {
           </fieldset>
 
           <div>
-            <label className="text-sm" htmlFor="people">
-              Number of People
-            </label>
+            <div className="flex justify-between text-xs">
+              <label className="" htmlFor="people">
+                Number of People
+              </label>
+              {errors?.people ? (
+                <p className="text-red-400">{errors?.people.message}</p>
+              ) : (
+                ''
+              )}
+            </div>
 
             <label
               htmlFor="people"
@@ -152,11 +176,18 @@ function Calculator() {
                 alt="dollar symbol"
               />
               <input
-                className="placeholder:text-input-cyan h-8 w-full cursor-pointer bg-very-light-grayish-cyan text-end font-bold caret-highlight-cyan outline-none"
+                className="placeholder:text-input-cyan h-8 w-full cursor-pointer bg-very-light-grayish-cyan text-end font-bold text-very-dark-cyan caret-highlight-cyan
+                outline-none"
                 placeholder="0"
                 type="text"
                 id="people"
-                {...register('people')}
+                {...register('people', {
+                  required: 'This field is required',
+                  validate: {
+                    zero: (v) => parseInt(v) !== 0 || "Can't be zero",
+                    positive: (v) => parseInt(v) > 0 || "Can't be negative",
+                  },
+                })}
               />
             </label>
           </div>
