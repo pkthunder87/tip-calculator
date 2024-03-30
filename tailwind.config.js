@@ -21,7 +21,7 @@ export default {
         'very-light-grayish-cyan': 'hsl(189, 41%, 97%)',
         'highlight-cyan': 'hsl(174, 53%, 60%)',
         'selected-cyan': 'hsl(170, 53%, 70%)',
-        'ring-cyan': 'hsl(174, 53%, 40%)',
+        'ring-cyan': 'hsl(178, 60%, 40%)',
         'input-cyan': 'hsl(184, 19%, 68%)',
       },
     },

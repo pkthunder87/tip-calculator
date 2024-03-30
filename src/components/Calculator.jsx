@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 
 function Calculator() {
   const [curChecked, setCurChecked] = useState('0');
+  const [customTip, setCustomTip] = useState(false);
 
   const {
     register,
@@ -13,8 +14,9 @@ function Calculator() {
   });
 
   function whenChange(data) {
+    setCurChecked(() => data?.tipPercent);
     console.log(data);
-    setCurChecked(() => data?.drone);
+    console.log(curChecked);
   }
 
   function onError(errors) {
@@ -25,6 +27,7 @@ function Calculator() {
     <div className="-mt-10 flex h-full w-full items-center justify-center">
       <form
         onChange={handleSubmit(whenChange, onError)}
+        onBlur={handleSubmit(whenChange, onError)}
         className="flex h-full w-[64%] items-center justify-center gap-[4%] rounded-[16px] bg-white p-[2%] drop-shadow-sm"
       >
         <div className="flex h-[100%] w-[48%] flex-col  gap-12 rounded-[26px]  p-4 font-bold text-dark-grayish-cyan">
@@ -69,9 +72,9 @@ function Calculator() {
               Select Tip %
             </legend>
 
-            <div>
+            <div onClick={() => setCustomTip(false)}>
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '5' ? 'bg-ring-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '5' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
                 htmlFor="5"
               >
                 5%
@@ -80,14 +83,14 @@ function Calculator() {
                   type="radio"
                   id="5"
                   value="5"
-                  {...register('drone')}
+                  {...register('tipPercent')}
                 />
               </label>
             </div>
 
-            <div>
+            <div onClick={() => setCustomTip(false)}>
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '10' ? 'bg-ring-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '10' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
                 htmlFor="10"
               >
                 10%
@@ -96,14 +99,14 @@ function Calculator() {
                   type="radio"
                   id="10"
                   value="10"
-                  {...register('drone')}
+                  {...register('tipPercent')}
                 />
               </label>
             </div>
 
-            <div>
+            <div onClick={() => setCustomTip(false)}>
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '15' ? 'bg-ring-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '15' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
                 htmlFor="15"
               >
                 15%
@@ -112,14 +115,14 @@ function Calculator() {
                   type="radio"
                   id="15"
                   value="15"
-                  {...register('drone')}
+                  {...register('tipPercent')}
                 />
               </label>
             </div>
 
-            <div>
+            <div onClick={() => setCustomTip(false)}>
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '25' ? 'bg-ring-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '25' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
                 htmlFor="25"
               >
                 25%
@@ -128,14 +131,14 @@ function Calculator() {
                   type="radio"
                   id="25"
                   value="25"
-                  {...register('drone')}
+                  {...register('tipPercent')}
                 />
               </label>
             </div>
 
-            <div>
+            <div onClick={() => setCustomTip(false)}>
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '50' ? 'bg-ring-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '50' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
                 htmlFor="50"
               >
                 50%
@@ -144,26 +147,36 @@ function Calculator() {
                   type="radio"
                   id="50"
                   value="50"
-                  {...register('drone')}
+                  {...register('tipPercent')}
                 />
               </label>
             </div>
 
             <div>
-              <label
-                className="w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-light-grayish-cyan text-dark-grayish-cyan"
-                htmlFor="custom"
-              >
-                Custom
+              {customTip ? (
                 <input
-                  className="appearance-none"
-                  type="radio"
-                  id="custom"
-                  name="drone"
-                  value="custom"
-                  {...register('drone')}
+                  onClick={() => setCurChecked(null)}
+                  className="h-[2.2rem] w-[5.5rem] cursor-pointer rounded-[4px] bg-very-light-grayish-cyan px-2 text-end font-bold text-very-dark-cyan caret-highlight-cyan
+                  outline-none ring-highlight-cyan placeholder:text-input-cyan focus:ring-2"
+                  name="custom"
+                  type="text"
+                  {...register('customTip', {
+                    required: 'This field is required',
+                    validate: {
+                      zero: (v) => parseInt(v) !== 0 || "Can't be zero",
+                      positive: (v) => parseInt(v) > 0 || "Can't be negative",
+                    },
+                  })}
                 />
-              </label>
+              ) : (
+                <label
+                  onClick={() => setCustomTip(true)}
+                  className="w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-light-grayish-cyan text-dark-grayish-cyan"
+                  htmlFor="custom"
+                >
+                  Custom
+                </label>
+              )}
             </div>
           </fieldset>
 
