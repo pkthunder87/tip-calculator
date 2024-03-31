@@ -7,6 +7,7 @@ function Calculator() {
 
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -14,7 +15,6 @@ function Calculator() {
   });
 
   function whenChange(data) {
-    setCurChecked(() => data?.tipPercent);
     console.log(data);
     console.log(curChecked);
   }
@@ -72,9 +72,14 @@ function Calculator() {
               Select Tip %
             </legend>
 
-            <div onClick={() => setCustomTip(false)}>
+            <div
+              onClick={() => {
+                setCustomTip(false);
+                setCurChecked('5');
+              }}
+            >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '5' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '5' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
                 htmlFor="5"
               >
                 5%
@@ -88,9 +93,14 @@ function Calculator() {
               </label>
             </div>
 
-            <div onClick={() => setCustomTip(false)}>
+            <div
+              onClick={() => {
+                setCustomTip(false);
+                setCurChecked('10');
+              }}
+            >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '10' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '10' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
                 htmlFor="10"
               >
                 10%
@@ -104,9 +114,14 @@ function Calculator() {
               </label>
             </div>
 
-            <div onClick={() => setCustomTip(false)}>
+            <div
+              onClick={() => {
+                setCustomTip(false);
+                setCurChecked('15');
+              }}
+            >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '15' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '15' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
                 htmlFor="15"
               >
                 15%
@@ -120,9 +135,14 @@ function Calculator() {
               </label>
             </div>
 
-            <div onClick={() => setCustomTip(false)}>
+            <div
+              onClick={() => {
+                setCustomTip(false);
+                setCurChecked('25');
+              }}
+            >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '25' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '25' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
                 htmlFor="25"
               >
                 25%
@@ -136,9 +156,14 @@ function Calculator() {
               </label>
             </div>
 
-            <div onClick={() => setCustomTip(false)}>
+            <div
+              onClick={() => {
+                setCustomTip(false);
+                setCurChecked('50');
+              }}
+            >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '50' ? 'bg-cyan-500 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '50' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
                 htmlFor="50"
               >
                 50%
@@ -218,7 +243,27 @@ function Calculator() {
             </label>
           </div>
         </div>
-        <div className="h-[100%] w-[48%] rounded-[12px] bg-very-dark-cyan "></div>
+        <div className="grid h-[100%] w-[48%] grid-cols-2 grid-rows-[25%_25%_50%]  rounded-[12px] bg-very-dark-cyan p-8 text-highlight-cyan">
+          <div className="mt-4">
+            <p className="text-[.75rem] font-bold text-white">Tip Amount</p>
+            <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
+          </div>
+          <div className="mt-2 justify-self-end text-4xl font-bold">$0.00</div>
+          <div className="mt-6">
+            <p className="text-[.75rem] font-bold text-white">Total</p>
+            <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
+          </div>
+          <div className="mt-4 justify-self-end text-4xl font-bold">$0.00</div>
+
+          <div className=" col-span-full self-end">
+            <button
+              className=" h-10 w-full rounded-[3px] bg-[hsl(183_100%_20%)] font-bold text-[hsl(183_100%_18%)] hover:bg-selected-cyan hover:text-very-dark-cyan"
+              onClick={() => reset()}
+            >
+              RESET
+            </button>
+          </div>
+        </div>
       </form>
     </div>
   );
