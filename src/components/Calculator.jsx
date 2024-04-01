@@ -8,6 +8,7 @@ function Calculator() {
   const {
     register,
     reset,
+    getValues,
     handleSubmit,
     formState: { errors },
   } = useForm({
@@ -15,14 +16,22 @@ function Calculator() {
   });
 
   function whenChange(data) {
-    console.log(data);
-    console.log(curChecked);
+    // console.log(data);
+    // console.log(curChecked);
   }
 
   function onError(errors) {
-    console.log(errors);
+    // console.log(errors);
   }
 
+  const currentTip = curChecked || getValues().customTip;
+
+  const tipAmount =
+    (parseFloat(getValues().bill) * (currentTip / 100)) /
+    parseFloat(getValues().people);
+  console.log(getValues());
+  console.log(tipAmount);
+  console.log(currentTip);
   return (
     <div className="-mt-10 flex h-full w-full items-center justify-center">
       <form
@@ -248,7 +257,9 @@ function Calculator() {
             <p className="text-[.75rem] font-bold text-white">Tip Amount</p>
             <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
           </div>
-          <div className="mt-2 justify-self-end text-4xl font-bold">$0.00</div>
+          <div className="mt-2 justify-self-end text-4xl font-bold">
+            {tipAmount ? tipAmount.toFixed(2) : '$0.00'}
+          </div>
           <div className="mt-6">
             <p className="text-[.75rem] font-bold text-white">Total</p>
             <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
