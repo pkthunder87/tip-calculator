@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import RadioTip from './RadioTip';
 
 function Calculator() {
   const [curChecked, setCurChecked] = useState('0');
@@ -47,8 +48,6 @@ function Calculator() {
       : billAmount
         ? billAmount.toFixed(2)
         : '0.00';
-
-  console.log(Boolean(tipAmount));
 
   return (
     <div className="-mt-10 flex h-full w-full items-center justify-center">
@@ -99,110 +98,45 @@ function Calculator() {
               Select Tip %
             </legend>
 
-            <div
-              onClick={() => {
-                setCustomTip(false);
-                setCurChecked('5');
-              }}
-            >
-              <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '5' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
-                htmlFor="5"
-              >
-                5%
-                <input
-                  className="appearance-none"
-                  type="radio"
-                  id="5"
-                  value="5"
-                  {...register('tipPercent')}
-                />
-              </label>
-            </div>
+            <RadioTip
+              curChecked={curChecked}
+              setCurChecked={setCurChecked}
+              setCustomTip={setCustomTip}
+              register={register}
+              tipValue={'5'}
+            />
 
-            <div
-              onClick={() => {
-                setCustomTip(false);
-                setCurChecked('10');
-              }}
-            >
-              <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px]  ${curChecked === '10' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
-                htmlFor="10"
-              >
-                10%
-                <input
-                  className="appearance-none"
-                  type="radio"
-                  id="10"
-                  value="10"
-                  {...register('tipPercent')}
-                />
-              </label>
-            </div>
+            <RadioTip
+              curChecked={curChecked}
+              setCurChecked={setCurChecked}
+              setCustomTip={setCustomTip}
+              register={register}
+              tipValue={'10'}
+            />
 
-            <div
-              onClick={() => {
-                setCustomTip(false);
-                setCurChecked('15');
-              }}
-            >
-              <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '15' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
-                htmlFor="15"
-              >
-                15%
-                <input
-                  className="appearance-none"
-                  type="radio"
-                  id="15"
-                  value="15"
-                  {...register('tipPercent')}
-                />
-              </label>
-            </div>
+            <RadioTip
+              curChecked={curChecked}
+              setCurChecked={setCurChecked}
+              setCustomTip={setCustomTip}
+              register={register}
+              tipValue={'15'}
+            />
 
-            <div
-              onClick={() => {
-                setCustomTip(false);
-                setCurChecked('25');
-              }}
-            >
-              <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '25' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
-                htmlFor="25"
-              >
-                25%
-                <input
-                  className="appearance-none"
-                  type="radio"
-                  id="25"
-                  value="25"
-                  {...register('tipPercent')}
-                />
-              </label>
-            </div>
+            <RadioTip
+              curChecked={curChecked}
+              setCurChecked={setCurChecked}
+              setCustomTip={setCustomTip}
+              register={register}
+              tipValue={'25'}
+            />
 
-            <div
-              onClick={() => {
-                setCustomTip(false);
-                setCurChecked('50');
-              }}
-            >
-              <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '50' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
-                htmlFor="50"
-              >
-                50%
-                <input
-                  className="appearance-none"
-                  type="radio"
-                  id="50"
-                  value="50"
-                  {...register('tipPercent')}
-                />
-              </label>
-            </div>
+            <RadioTip
+              curChecked={curChecked}
+              setCurChecked={setCurChecked}
+              setCustomTip={setCustomTip}
+              register={register}
+              tipValue={'50'}
+            />
 
             <div>
               {customTip ? (
@@ -270,6 +204,7 @@ function Calculator() {
             </label>
           </div>
         </div>
+
         <div className="grid h-[100%] w-[48%] grid-cols-2 grid-rows-[25%_25%_50%]  rounded-[12px] bg-very-dark-cyan p-8 text-highlight-cyan">
           <div className="mt-4">
             <p className="text-[.75rem] font-bold text-white">Tip Amount</p>
@@ -289,7 +224,10 @@ function Calculator() {
           <div className=" col-span-full self-end">
             <button
               className=" h-10 w-full rounded-[3px] bg-highlight-cyan font-bold text-very-dark-cyan hover:bg-selected-cyan disabled:bg-[hsl(183_100%_20%)] disabled:text-[hsl(183_100%_18%)]"
-              onClick={() => reset()}
+              onClick={() => {
+                setCurChecked('0');
+                reset();
+              }}
               disabled={!tipAmount}
             >
               RESET
