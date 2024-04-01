@@ -16,22 +16,40 @@ function Calculator() {
   });
 
   function whenChange(data) {
-    // console.log(data);
+    console.log(data);
     // console.log(curChecked);
   }
 
   function onError(errors) {
-    // console.log(errors);
+    console.log(errors);
   }
 
-  const currentTip = curChecked || getValues().customTip;
+  const currentTip = curChecked / 100 || getValues().customTip / 100;
 
   const tipAmount =
-    (parseFloat(getValues().bill) * (currentTip / 100)) /
+    (parseFloat(getValues().bill) * currentTip) /
     parseFloat(getValues().people);
-  console.log(getValues());
-  console.log(tipAmount);
-  console.log(currentTip);
+
+  const tipAmountDisplay =
+    tipAmount === Infinity
+      ? '0.00'
+      : tipAmount
+        ? Math.floor(tipAmount * 100) / 100
+        : '0.00';
+
+  const billAmount = (getValues().bill * (currentTip + 1)) / getValues().people;
+
+  console.log(billAmount);
+
+  const totalDisplay =
+    billAmount === Infinity
+      ? '0.00'
+      : billAmount
+        ? billAmount.toFixed(2)
+        : '0.00';
+
+  console.log(Boolean(tipAmount));
+
   return (
     <div className="-mt-10 flex h-full w-full items-center justify-center">
       <form
@@ -88,7 +106,7 @@ function Calculator() {
               }}
             >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '5' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '5' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
                 htmlFor="5"
               >
                 5%
@@ -109,7 +127,7 @@ function Calculator() {
               }}
             >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '10' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px]  ${curChecked === '10' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
                 htmlFor="10"
               >
                 10%
@@ -130,7 +148,7 @@ function Calculator() {
               }}
             >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '15' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '15' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
                 htmlFor="15"
               >
                 15%
@@ -151,7 +169,7 @@ function Calculator() {
               }}
             >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '25' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '25' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
                 htmlFor="25"
               >
                 25%
@@ -172,7 +190,7 @@ function Calculator() {
               }}
             >
               <label
-                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-dark-cyan ${curChecked === '50' ? 'bg-cyan-600 text-very-dark-cyan' : ''}`}
+                className={`w-22 flex h-[2.2rem] cursor-pointer items-center justify-center rounded-[4px] ${curChecked === '50' ? 'bg-highlight-cyan text-very-dark-cyan' : 'bg-very-dark-cyan'}`}
                 htmlFor="50"
               >
                 50%
@@ -258,18 +276,21 @@ function Calculator() {
             <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
           </div>
           <div className="mt-2 justify-self-end text-4xl font-bold">
-            {tipAmount ? tipAmount.toFixed(2) : '$0.00'}
+            ${tipAmountDisplay}
           </div>
           <div className="mt-6">
             <p className="text-[.75rem] font-bold text-white">Total</p>
             <p className="text-[.6rem] text-light-grayish-cyan">/ person</p>
           </div>
-          <div className="mt-4 justify-self-end text-4xl font-bold">$0.00</div>
+          <div className="mt-4 justify-self-end text-4xl font-bold">
+            ${totalDisplay}
+          </div>
 
           <div className=" col-span-full self-end">
             <button
-              className=" h-10 w-full rounded-[3px] bg-[hsl(183_100%_20%)] font-bold text-[hsl(183_100%_18%)] hover:bg-selected-cyan hover:text-very-dark-cyan"
+              className=" h-10 w-full rounded-[3px] bg-highlight-cyan font-bold text-very-dark-cyan hover:bg-selected-cyan disabled:bg-[hsl(183_100%_20%)] disabled:text-[hsl(183_100%_18%)]"
               onClick={() => reset()}
+              disabled={!tipAmount}
             >
               RESET
             </button>
