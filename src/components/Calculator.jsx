@@ -23,14 +23,9 @@ function Calculator() {
     shouldFocusError: false,
   });
 
-  function whenChange(data) {
-    console.log(data);
-    // console.log(curChecked);
-  }
+  function whenChange() {}
 
-  function onError(errors) {
-    console.log(errors);
-  }
+  function onError() {}
 
   const currentTip = curChecked / 100 || getValues().customTip / 100;
 
@@ -48,8 +43,6 @@ function Calculator() {
           : '0.00';
 
   const billAmount = (getValues().bill * (currentTip + 1)) / getValues().people;
-
-  console.log(billAmount);
 
   const totalDisplay =
     billAmount === Infinity
