@@ -7,6 +7,8 @@ import RadioTip from './RadioTip';
 import CustomTip from './CustomTip';
 import CalcTotals from './CalcTotals';
 
+const tipOptions = ['5', '10', '15', '25', '50'];
+
 function Calculator() {
   const [curChecked, setCurChecked] = useState('0');
   const [customTip, setCustomTip] = useState(false);
@@ -39,9 +41,11 @@ function Calculator() {
   const tipAmountDisplay =
     tipAmount === Infinity
       ? '0.00'
-      : tipAmount
-        ? Math.floor(tipAmount * 100) / 100
-        : '0.00';
+      : tipAmount < 0
+        ? '0.00'
+        : tipAmount
+          ? Math.floor(tipAmount * 100) / 100
+          : '0.00';
 
   const billAmount = (getValues().bill * (currentTip + 1)) / getValues().people;
 
@@ -50,9 +54,11 @@ function Calculator() {
   const totalDisplay =
     billAmount === Infinity
       ? '0.00'
-      : billAmount
-        ? billAmount.toFixed(2)
-        : '0.00';
+      : billAmount < 0
+        ? '0.00'
+        : billAmount
+          ? billAmount.toFixed(2)
+          : '0.00';
 
   return (
     <div className="-mt-10 flex h-full w-full items-center justify-center">
@@ -69,45 +75,18 @@ function Calculator() {
               Select Tip %
             </legend>
 
-            <RadioTip
-              curChecked={curChecked}
-              setCurChecked={setCurChecked}
-              setCustomTip={setCustomTip}
-              register={register}
-              tipValue={'5'}
-            />
-
-            <RadioTip
-              curChecked={curChecked}
-              setCurChecked={setCurChecked}
-              setCustomTip={setCustomTip}
-              register={register}
-              tipValue={'10'}
-            />
-
-            <RadioTip
-              curChecked={curChecked}
-              setCurChecked={setCurChecked}
-              setCustomTip={setCustomTip}
-              register={register}
-              tipValue={'15'}
-            />
-
-            <RadioTip
-              curChecked={curChecked}
-              setCurChecked={setCurChecked}
-              setCustomTip={setCustomTip}
-              register={register}
-              tipValue={'25'}
-            />
-
-            <RadioTip
-              curChecked={curChecked}
-              setCurChecked={setCurChecked}
-              setCustomTip={setCustomTip}
-              register={register}
-              tipValue={'50'}
-            />
+            {tipOptions.map((tip) => {
+              return (
+                <RadioTip
+                  key={tip}
+                  tipValue={tip}
+                  curChecked={curChecked}
+                  setCurChecked={setCurChecked}
+                  setCustomTip={setCustomTip}
+                  register={register}
+                />
+              );
+            })}
 
             <CustomTip
               customTip={customTip}
