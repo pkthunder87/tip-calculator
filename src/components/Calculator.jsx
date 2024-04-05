@@ -63,8 +63,8 @@ function Calculator() {
         <div className="flex h-[100%] w-[48%] flex-col  gap-12 rounded-[26px]  font-bold text-dark-grayish-cyan sm:p-4 xl2:py-[1.6rem] xl2:pl-[1.33rem] xl2:pr-5">
           <BillInput register={register} errors={errors} />
 
-          <fieldset className="grid grid-cols-3 gap-3 text-lg font-bold text-white">
-            <legend className="text-xs  text-dark-grayish-cyan">
+          <fieldset className="grid grid-cols-3 gap-3 text-lg font-bold text-white xl2:gap-5 ">
+            <legend className=" mb-[1.3rem] mt-0 text-xs text-dark-grayish-cyan xl2:mb-[1.75rem] xl2:mt-[.52rem] xl2:text-[1.25rem]">
               Select Tip %
             </legend>
 

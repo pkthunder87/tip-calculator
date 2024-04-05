@@ -1,7 +1,7 @@
 function BillInput({ register, errors }) {
   return (
     <div>
-      <div className="flex justify-between text-xs xl2:mb-4 xl2:text-[1.23rem]">
+      <div className="flex justify-between text-xs xl2:mb-[.93rem] xl2:mt-[1px] xl2:text-[1.25rem]">
         <label className="" htmlFor="bill">
           Bill
         </label>
@@ -16,7 +16,7 @@ function BillInput({ register, errors }) {
         className="flex h-8 w-full cursor-pointer items-center rounded-sm  bg-very-light-grayish-cyan px-2   ring-highlight-cyan  focus-within:ring-2 xl2:h-[3.75rem] xl2:rounded-md xl2:p-5"
       >
         <img
-          className="scale-[1] xl2:mt-[1px] xl2:p-1 "
+          className="scale-[.6] xl2:mt-[1px] xl2:scale-100 xl2:p-1 "
           src="./icon-dollar.svg"
           alt="dollar symbol"
         />
