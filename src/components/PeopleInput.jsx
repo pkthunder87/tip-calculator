@@ -1,7 +1,7 @@
 function PeopleInput({ register, errors }) {
   return (
     <div>
-      <div className="flex justify-between text-xs xl2:mb-[.93rem] xl2:mt-[.5rem] xl2:text-[1.25rem]">
+      <div className="mb-[.4rem] flex justify-between text-base sm:text-xs xl2:mb-[.93rem] xl2:mt-[.5rem] xl2:text-[1.25rem]">
         <label className="" htmlFor="people">
           Number of People
         </label>
@@ -14,16 +14,15 @@ function PeopleInput({ register, errors }) {
 
       <label
         htmlFor="people"
-        className="flex h-8 w-full cursor-pointer items-center   rounded-sm bg-very-light-grayish-cyan px-2 ring-highlight-cyan focus-within:ring-2 xl2:h-[3.75rem] xl2:rounded-md xl2:p-5"
+        className="flex h-12 w-[83dvw] cursor-pointer items-center rounded-md bg-very-light-grayish-cyan px-2 ring-highlight-cyan  focus-within:ring-2 sm:h-8   sm:w-full  sm:rounded-sm xl2:h-[3.75rem] xl2:rounded-md xl2:p-5"
       >
         <img
-          className="scale-[.6] xl2:ml-[1px] xl2:scale-100"
+          className="scale-100 p-2 sm:scale-[.6] sm:p-0 xl2:mt-[1px] xl2:scale-100 xl2:p-1 "
           src="./icon-person.svg"
-          alt="dollar symbol"
+          alt="icon person"
         />
         <input
-          className="h-8 w-full cursor-pointer bg-very-light-grayish-cyan text-end font-bold text-very-dark-cyan caret-highlight-cyan outline-none placeholder:text-input-cyan 
-        xl2:mr-[1px] xl2:text-3xl"
+          className="h-8 w-full cursor-pointer bg-very-light-grayish-cyan p-2 text-end text-2xl font-bold text-very-dark-cyan caret-highlight-cyan outline-none placeholder:text-input-cyan sm:p-0 sm:text-lg xl2:h-[3.75rem] xl2:rounded-md  xl2:p-[1px] xl2:text-3xl"
           placeholder="0"
           type="text"
           id="people"
