@@ -6,33 +6,33 @@ function CalcTotals({
   reset,
 }) {
   return (
-    <div className="  grid h-[100%] w-[100%] grid-cols-2 grid-rows-[25%_25%_50%] rounded-[14px] bg-very-dark-cyan p-8 text-highlight-cyan  sm:ml-0 sm:w-[48%] sm:rounded-[12px] xl2:rounded-[16px] xl2:p-12">
-      <div className="mt-4 xl2:mt-[1.65rem]">
-        <p className="text-[.75rem] font-bold text-white xl2:text-[1.25rem]">
+    <div className=" -ml-[.3rem] mt-8 grid h-64  w-[104%] grid-cols-2 grid-rows-[25%_25%_50%] rounded-[14px] bg-very-dark-cyan p-[1.4rem]  text-highlight-cyan sm:ml-0 sm:mt-0 sm:h-[100%]  sm:w-[48%] sm:rounded-[12px] sm:p-8 xl2:rounded-[16px] xl2:p-12">
+      <div className="mt-[1.2rem] sm:mt-4 xl2:mt-[1.65rem]">
+        <p className="font-bold text-white sm:mt-0 sm:text-[.75rem] xl2:text-[1.25rem]">
           Tip Amount
         </p>
-        <p className="text-[.6rem] font-bold  text-[hsl(174,24%,56%)] xl2:text-[1rem]">
+        <p className="text-[.82rem] font-bold  text-[hsl(174,24%,56%)] sm:text-[.6rem] xl2:text-[1rem]">
           / person
         </p>
       </div>
-      <div className="mt-2 justify-self-end text-4xl font-bold xl2:mt-[1.65rem] xl2:text-[3.7rem] xl2:leading-[.92em]">
+      <div className="mt-6 justify-self-end text-3xl font-bold sm:mt-2 sm:text-4xl xl2:mt-[1.65rem] xl2:text-[3.7rem] xl2:leading-[.92em]">
         ${tipAmountDisplay}
       </div>
-      <div className="mt-6 xl2:mt-[2.4rem] ">
-        <p className="text-[.75rem] font-bold text-white xl2:text-[1.25rem]">
+      <div className="mt-8 sm:mt-6 xl2:mt-[2.4rem] ">
+        <p className="font-bold text-white sm:text-[.75rem] xl2:text-[1.25rem]">
           Total
         </p>
-        <p className="text-[.6rem] font-bold text-[hsl(174,24%,56%)] xl2:text-[1rem]">
+        <p className="text-[.82rem] font-bold text-[hsl(174,24%,56%)] sm:text-[.6rem] xl2:text-[1rem]">
           / person
         </p>
       </div>
-      <div className="mt-4 justify-self-end text-4xl font-bold xl2:mt-[2.2rem] xl2:text-[3.7rem] xl2:leading-[.92em]">
+      <div className="mt-9 justify-self-end text-3xl font-bold sm:mt-4 sm:text-4xl xl2:mt-[2.2rem] xl2:text-[3.7rem] xl2:leading-[.92em]">
         ${totalDisplay}
       </div>
 
       <div className=" col-span-full self-end">
         <button
-          className=" h-10 w-full rounded-[3px] bg-highlight-cyan font-bold text-very-dark-cyan hover:bg-selected-cyan disabled:bg-[hsl(183_100%_20%)] disabled:text-[hsl(183_100%_18%)] xl2:h-[3.75rem] xl2:rounded-md xl2:text-[1.6rem]"
+          className=" h-12 w-full rounded-[3px] bg-highlight-cyan text-xl font-bold text-very-dark-cyan hover:bg-selected-cyan disabled:bg-[hsl(183_100%_20%)] disabled:text-[hsl(183_100%_18%)] sm:h-10 sm:text-base xl2:h-[3.75rem] xl2:rounded-md xl2:text-[1.6rem]"
           onClick={() => {
             setCurChecked('0');
             reset();

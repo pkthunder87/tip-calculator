@@ -19,7 +19,7 @@ function CustomTip({ customTip, setCustomTip, setCurChecked, register }) {
       ) : (
         <label
           onClick={() => setCustomTip(true)}
-          className="flex h-12  w-[9.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-light-grayish-cyan text-2xl text-dark-grayish-cyan sm:h-[2.2rem] sm:w-[5.6rem] sm:text-lg xl2:h-[3.75rem] xl2:w-[9.15rem] xl2:rounded-[5px] xl2:text-3xl"
+          className="flex h-12  w-[9.2rem] cursor-pointer items-center justify-center rounded-[4px] bg-very-light-grayish-cyan pl-6 text-2xl text-dark-grayish-cyan sm:h-[2.2rem] sm:w-[5.6rem] sm:pl-0 sm:text-lg xl2:h-[3.75rem] xl2:w-[9.15rem] xl2:rounded-[5px] xl2:text-3xl"
           htmlFor="custom"
         >
           Custom
