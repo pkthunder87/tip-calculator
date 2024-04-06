@@ -58,9 +58,9 @@ function Calculator() {
       <form
         onChange={handleSubmit(whenChange, onError)}
         onBlur={handleSubmit(whenChange, onError)}
-        className="flex h-full w-[64%] items-center justify-center gap-[4%] rounded-[16px] bg-white shadow-[0_15px_30px_20px_rgb(0,73,77,.09)] sm:p-[2%] xl2:w-[63.8%] xl2:rounded-[24px] xl2:p-[2.1%]"
+        className="grid h-[102%] w-full items-center justify-center rounded-t-[22px] bg-white py-8  shadow-[0_15px_30px_20px_rgb(0,73,77,.09)] sm:flex sm:w-[64%] sm:gap-[4%] sm:rounded-[16px] sm:p-[2%] xl2:w-[63.8%] xl2:rounded-[24px] xl2:p-[2.1%]"
       >
-        <div className="flex h-[100%] w-[48%] flex-col  gap-12 rounded-[26px]  font-bold text-dark-grayish-cyan sm:p-4 xl2:py-[1.6rem] xl2:pl-[1.33rem] xl2:pr-5">
+        <div className="flex h-full w-full flex-col gap-12 rounded-[26px]  pl-0 pr-0 font-bold text-dark-grayish-cyan  sm:h-[100%] sm:w-[48%] sm:p-4 xl2:py-[1.6rem] xl2:pl-[1.33rem] xl2:pr-5">
           <BillInput register={register} errors={errors} />
 
           <fieldset className="grid grid-cols-3 gap-3 text-lg font-bold text-white xl2:gap-5 ">

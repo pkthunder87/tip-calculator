@@ -4,7 +4,7 @@
 
 @layer base {
   html {
-    @apply sm:text-[80%];
+    @apply text-[100%] sm:text-[80%];
   }
 
   /* Basic styles for mobile and desktop */
