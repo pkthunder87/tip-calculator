@@ -1,7 +1,7 @@
 function PeopleInput({ register, errors }) {
   return (
     <div>
-      <div className="mb-[.4rem] flex justify-between text-base sm:text-xs xl2:mb-[.93rem] xl2:mt-[.5rem] xl2:text-[1.25rem]">
+      <div className="mb-[.4rem] flex justify-between text-base xl2:mb-[.93rem] xl2:mt-[.5rem] xl2:text-[1.25rem]">
         <label className="" htmlFor="people">
           Number of People
         </label>
