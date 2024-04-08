@@ -29,6 +29,7 @@ function Calculator() {
 
   const currentTip = curChecked / 100 || getValues().customTip / 100;
 
+  // Calculates tip per person
   const tipAmount =
     (parseFloat(getValues().bill) * currentTip) /
     parseFloat(getValues().people);
@@ -42,6 +43,7 @@ function Calculator() {
           ? Math.floor(tipAmount * 100) / 100
           : '0.00';
 
+  // Calculates bill per person
   const billAmount = (getValues().bill * (currentTip + 1)) / getValues().people;
 
   const totalDisplay =
